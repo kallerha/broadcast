@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace FluencePrototype\Broadcast;
 
+use FluencePrototype\Session\SessionService;
+
 /**
  * Class BroadcastService
  * @package FluencePrototype\Broadcast
