@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace FluencePrototype\Broadcast;
 
 use FluencePrototype\Session\SessionService;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * Class BroadcastService
@@ -18,7 +19,7 @@ class BroadcastService
     /**
      * BroadcastService constructor.
      */
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->sessionService = new SessionService();
     }
