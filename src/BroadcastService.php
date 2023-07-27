@@ -53,8 +53,16 @@ class BroadcastService
         $this->sessionService->set('bcf_array', [new Flash($type, $message)]);
     }
 
-    public function flashes() : array {
-        return $this->sessionService->get('bcf_array') ?? [];
+    /**
+     * @return Flash[]
+     */
+    public function flashes(): array
+    {
+        $flashes = $this->sessionService->get('bcf_array') ?? [];
+
+        $this->sessionService->unset('bcf_array');
+        
+        return $flashes;
     }
 
     /**
