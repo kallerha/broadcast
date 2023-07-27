@@ -40,6 +40,23 @@ class BroadcastService
         return false;
     }
 
+    public function addFlash(string $type, string $message): void
+    {
+        if ($flashes = $this->sessionService->get('bcf_array')) {
+            $flashes[] = new Flash($type, $message);
+
+            $this->sessionService->set('bcf_array', $flashes);
+
+            return;
+        }
+
+        $this->sessionService->set('bcf_array', [new Flash($type, $message)]);
+    }
+
+    public function flashes() : array {
+        return $this->sessionService->get('bcf_array') ?? [];
+    }
+
     /**
      * @param string $name
      * @return string|int|null
@@ -51,5 +68,6 @@ class BroadcastService
 
         return $message;
     }
+
 
 }
